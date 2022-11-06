@@ -1,41 +1,48 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { AppState } from '../store/store';
 import { HYDRATE } from 'next-redux-wrapper';
+import {productCategoryThunk} from "../thunk/productThunk";
 
 // Type for our state
-export interface AuthState {
-    authState: boolean;
+export interface ProductState {
+    categories: Array<any>;
+    error:string;
 }
 
 // Initial state
-const initialState: AuthState = {
-    authState: false,
+const initialState: ProductState = {
+    categories:[],
+    error:""
 };
 
 // Actual Slice
-export const authSlice = createSlice({
-    name: 'auth',
+export const productSlice = createSlice({
+    name: 'productSlice',
     initialState,
     reducers: {
-        // Action to set the authentication status
-        setAuthState(state, action) {
-            state.authState = action.payload;
-        },
-
-        // Special reducer for hydrating the state. Special case for next-redux-wrapper
-        extraReducers: {
-            [HYDRATE]: (state: any, action: any) => {
-                return {
-                    ...state,
-                    ...action.payload.auth,
-                };
-            },
+        [HYDRATE]: (state: any, action: any) => {
+            console.log('HYDRATE', state, action.payload);
+            return {
+                ...state,
+                ...action.payload.productSlice,
+            };
         },
     },
+    extraReducers:(builder) => {
+        builder.addCase(productCategoryThunk.fulfilled, (state:any, action:any)=>{
+            if(!action.payload.isErr){
+                state.categories = action.payload.data
+            }else{
+                state.error = action.payload?.data
+            }
+        } )
+        builder.addCase(productCategoryThunk.rejected, (state:any, action:any)=>{
+            state.error =action.payload.data
+        })
+    },
+
 });
 
-export const { setAuthState } = authSlice.actions;
 
-export const selectAuthState = (state: AppState) => state.auth.authState;
-
-export default authSlice.reducer;
+export const selectProductCategories = (state: AppState) => state.productSlice.categories;
+export default productSlice.reducer;

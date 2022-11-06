@@ -26,6 +26,7 @@ header{
   flex-direction: column;
   width: 100%;
   position: fixed;
+  height: 200px;
   top:0;
   left:0;
   z-index: 999;
@@ -155,7 +156,113 @@ nav{
   color: cornflowerblue;
 }
 
+.product-categories, .other-pages-list-wrapper{
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+}
+
+.product-categories > a, .other-pages-list-wrapper > a{
+  height: 40px;
+  width: 300px;
+  padding-left: 30px;
+  border-right: 1px solid lightgray;
+}
+
+.product-categories > a:hover, .other-pages-list-wrapper > a:hover{
+  color:cornflowerblue;
+}
+
+.product-categories > a > p, .other-pages-list-wrapper > a > p{
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  margin: 0;
+  height: 100%;
+}
+.footer-links{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 750px;
+}
+
+.webpage-content{
+  margin-top: 200px;
+  margin-bottom: 300px;
+  min-height: calc(100vh - 800px);
+}
+
+footer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  border-top: 20px solid cornflowerblue;
+  width: 100%;
+  height: 300px;
+}
+
+.search-bar-footer{
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+.search-bar-footer > a, .search-bar-footer > .search-bar,.search-bar-footer > .social-icons-wrappers {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 20px auto;
+}
+@media only screen and (min-device-width : 600px) and (max-device-width : 1200px){
+
+  header{
+    height: 150px !important;
+  }
+
+  .product-categories > a, .other-pages-list-wrapper > a, .search-bar-footer, .product-categories, .other-pages-list-wrapper{
+    width: 250px;
+  }
+
+  .footer-links{
+    width: 550px;
+    margin-left: 20px;
+  }
+
+  .search-bar-footer{
+    width: 450px;
+  }
+
+  .webpage-content{
+    margin-top: 150px;
+  }
+}
+
 @media only screen and (min-device-width : 320px) and (max-device-width : 600px) {
+
+  header{
+    height: 120px !important;
+  }
+
+  .webpage-content{
+    margin-top: 120px;
+  }
+
+  .footer-links, footer{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .product-categories > a, .other-pages-list-wrapper > a, .search-bar-footer, .product-categories, .other-pages-list-wrapper{
+    width: 100%;
+    border-right: none;
+  }
+
+  footer{
+    height: 750px;
+    padding: 20px;
+  }
 
   .top-bar-wrapper{
     flex-direction: column;
@@ -172,5 +279,9 @@ nav{
    .MuiList-padding{
     padding: 0;
   }
+
+   .search-bar > .input-and-icon-wrapper >input, .input-and-icon-wrapper, .search-bar{
+     width: 340px;
+   }
 
 }

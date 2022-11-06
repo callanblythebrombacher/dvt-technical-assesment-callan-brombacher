@@ -1,6 +1,8 @@
-import React, {FC} from 'react';
+import React, {FC, useEffect} from 'react';
 import dynamic from 'next/dynamic'
 import {isDesktop, isTablet} from 'react-device-detect'
+import {useAppDispatch} from "../../redux/store/store";
+import {productCategoryThunk} from "../../redux/thunk/productThunk";
 
 const NavBar = dynamic(
     () => import('../organisms/navBar.component'),
@@ -13,6 +15,13 @@ const TopBar = dynamic(
 )
 
 const Header:FC = function (){
+
+    const dispatch  = useAppDispatch()
+
+    useEffect(()=>{
+        dispatch(productCategoryThunk())
+    },[])
+
    return (
         <header>
             {(isDesktop || isTablet) && <TopBar />  }

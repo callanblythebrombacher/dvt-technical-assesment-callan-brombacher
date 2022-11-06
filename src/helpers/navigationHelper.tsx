@@ -21,6 +21,10 @@ export const helper: {
         hasIcon: boolean;
         icon: any;
     }>;
+    footerNav: Array<{
+        link: string;
+        text: string;
+    }>
 } = {
     homeNavGuest: [
         {
@@ -86,4 +90,22 @@ export const helper: {
             icon: <BsCart2 size={25} />,
         },
     ],
+    footerNav:[
+        {
+            link:'/contact',
+            text:'Contact Us',
+        },
+        {
+            link:'/terms-and-conditions',
+            text:'Terms and Conditions'
+        },
+        {
+            link:'/return-refund-policy',
+            text:'Return and Refund Policy'
+        },
+        {
+            link:'/privacy-policy',
+            text:'Privacy Policy'
+        }
+    ]
 };
