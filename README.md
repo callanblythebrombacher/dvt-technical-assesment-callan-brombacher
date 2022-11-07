@@ -1,5 +1,5 @@
 # <span style="color:red">Please Note Below!!</span>
-## <span style="color:lightblue">This website requires a reload when testing responsiveness for some features, due to the use of the library: react device detect.</span>
+## <span style="color:lightblue">This website requires a reload when testing responsiveness for some features, due to the use of the library: <a href="https://github.com/duskload/react-device-detect">react device detect</a>.</span>
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
