@@ -27,3 +27,28 @@ export const productCategoryThunk = createAsyncThunk<ThunkType>(
 
     }
 )
+
+export const getAllProductsThunk = createAsyncThunk<ThunkType>(
+    'productSlice/getAllProductsThunk',
+    async ()=>{
+        const axiosConfig:{
+            method:string;
+            url:string;
+        }={
+            method:'GET',
+            url:"https://fakestoreapi.com/products"
+        }
+        return await axios.request(axiosConfig)
+            .then(res=>{
+                return{
+                    isErr:false,
+                    data:res.data
+                }}
+            ).catch(err=>{
+                return{
+                    isErr:true,
+                    data:err
+                }
+            })
+    }
+)

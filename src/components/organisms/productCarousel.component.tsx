@@ -12,15 +12,13 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 export type Props = {
     ProductData: {
-        title: string;
-        stock: number;
-        price: string;
-        description: string;
-        image: any;
-        rating: number;
-        link: string;
+        id:number;
+        title:string;
+        price:string;
+        category:string;
+        description:string;
+        image:string;
     }[];
-    addToCart: (e: MouseEvent<HTMLElement>) => void;
 };
 
 export const ProductCarousel: FC<Props> = (props) => {
@@ -40,6 +38,10 @@ export const ProductCarousel: FC<Props> = (props) => {
         setActiveStep(step);
     };
 
+    const addToCart = (e:MouseEvent<HTMLElement>)=>{
+
+    }
+
     return (
         <div>
             <AutoPlaySwipeableViews
@@ -56,10 +58,10 @@ export const ProductCarousel: FC<Props> = (props) => {
                             price={value.price}
                             title={value.title}
                             shortDescription={value.description}
-                            addToCart={props.addToCart}
-                            link={value.link}
-                            stock={value.stock}
-                            rating={value.rating}
+                            addToCart={addToCart}
+                            link={'/product/' + value.title.replace(/\s/g , "-")}
+                            stock={100}
+                            rating={4}
                         />
                     );
                 })}

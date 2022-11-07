@@ -5,6 +5,7 @@ import { ButtonComponent } from '../atoms/button.component';
 import { GrAddCircle } from 'react-icons/all';
 import { useRouter } from 'next/router';
 import { Rating } from '../atoms/rating.component';
+import styles from '../../../styles/productCard.module.css'
 type Props = {
     image: any;
     price: string;
@@ -20,8 +21,8 @@ export const ProductCard: FC<Props> = (props) => {
     const router = useRouter();
 
     return (
-        <div className={'product-card'}>
-            <ImageComponent image={props.image} height={350} width={null} />
+        <div className={styles.productCardWrapper}>
+            <ImageComponent image={props.image} height={350} width={350} />
             <TextComponent fontType={'p'} text={props.stock} />
             <TextComponent fontType={'h3'} text={props.title} />
             <TextComponent fontType={'h5'} text={props.price} />

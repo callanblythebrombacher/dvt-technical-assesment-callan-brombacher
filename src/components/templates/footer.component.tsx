@@ -14,13 +14,13 @@ const Footer:FC = function (){
 
     const categorySelector= useAppSelector((state) => state.productSlice.categories);
     type ProductState ={
-        categories:any[];
+        categories:any[]|null;
     };
     const [productState, setProductState] =useState<ProductState>();
 
     useEffect(():void=>{
         setProductState({
-            categories:categorySelector
+            categories:(categorySelector !==null ? categorySelector.data : null)
         })
     }, [categorySelector])
     const [state, setState] = useState<string>('');
@@ -37,11 +37,11 @@ const Footer:FC = function (){
             <section className={'footer-links'}>
             <div className={'product-categories'}>
                 <TextComponent fontType={'h3'} text={'Categories'} />
-                {productState?.categories.map((value:string, index:number)=>{
+                {productState?.categories !== null ? productState?.categories.map((value:string, index:number)=>{
                   return(
                       <Link key={index} href={'/shop/'+value.replace(/\s/g,'-')}><p>{value}</p></Link>
                   )
-                })
+                }):null
                 }
             </div>
             <div className={'other-pages-list-wrapper'}>
