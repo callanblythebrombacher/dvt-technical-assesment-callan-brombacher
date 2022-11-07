@@ -1,4 +1,4 @@
-import React, {ChangeEvent, FC, useCallback, useContext, useState} from 'react';
+import React, {ChangeEvent, FC, useRef, useCallback, useContext, useState, useEffect} from 'react';
 import {ImageComponent} from '../atoms/image.component';
 import {PrimaryInput} from '../atoms/input.component';
 import {BiSearchAlt} from 'react-icons/all';
@@ -11,6 +11,7 @@ import {Drawer} from '../molecules/drawer.component'
 
 const NavBar:FC= function(){
 
+    const appBarRef = useRef<HTMLDivElement>(null)
     const [state, setState] = useState<string>('');
 
     const handleSearch: (e: ChangeEvent<HTMLInputElement>) => void = (e) => {
@@ -76,7 +77,19 @@ const NavBar:FC= function(){
         )
     },[isDesktop, isTablet])
 
-    return  <div className={'app-bar-wrapper'}>{appBarCallBack()}</div>;
+    const listenToScroll = ():void => {
+        const appBar = appBarRef.current
+        if(appBar !==null && window.scrollY ===0) appBar.style.marginTop = '50px'
+        if(appBar !==null && window.scrollY >5)appBar.style.marginTop = '0px'
+    }
+
+    useEffect(()=>{
+        window.addEventListener('scroll', listenToScroll)
+    }, [])
+
+    return  <div ref={appBarRef} className={'app-bar-wrapper'}>
+        {appBarCallBack()}
+    </div>;
 };
 
 export default NavBar
