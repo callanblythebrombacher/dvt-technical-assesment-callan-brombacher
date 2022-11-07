@@ -18,6 +18,10 @@ import {isMobile} from 'react-device-detect'
 import {PrimaryInput} from '../atoms/input.component'
 import { BiSearchAlt } from 'react-icons/all';
 import dynamic from 'next/dynamic'
+import Link from 'next/link';
+import { ImageComponent } from '../atoms/image.component';
+import logo from '../../assets/images/logo.png'
+
 const TopBar = dynamic(
     () => import('../organisms/topBar.component'),
     { ssr: false }
@@ -112,6 +116,9 @@ export const Drawer = () => {
                         {isMobile &&
                             <>
                             <TopBar/>
+                                <Link href={'/'}>
+                                    <ImageComponent image={logo} width={null} height={23}/>
+                                </Link>
                             <div className={'search-bar-drawer'}>
                                 <PrimaryInput
                                     value={search}

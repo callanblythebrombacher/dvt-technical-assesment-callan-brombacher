@@ -113,30 +113,6 @@ nav{
   padding: 10px;
 }
 
-.search-bar-drawer{
-  position: relative;
-  border-bottom: 1px solid lightgray;
-  padding-bottom:20px;
-
-}
-
-.search-bar-drawer > .input-and-icon-wrapper > input {
-  position: absolute;
-  width: 200px;
-  height: 40px;
-  padding: 0 50px 0 10px;
-  margin-left: 20px;
-}
-
-.search-bar-drawer > .input-and-icon-wrapper > .input-icon{
-  position: absolute;
-  z-index: 999;
-  transform-origin: center center;
-  top:20%;
-  right:-130px;
-  cursor: pointer;
-}
-
 .top-bar-wrapper{
   width: 100%;
   height: 50px;
@@ -292,12 +268,52 @@ footer{
     margin: 10px 0;
   }
 
+  .location-wrappers, .opening-hours, .search-bar-drawer{
+    justify-content: center;
+  }
+
    .MuiList-padding{
     padding: 0;
   }
 
-   .search-bar > .input-and-icon-wrapper >input, .input-and-icon-wrapper, .search-bar{
-     width: 340px;
+   .search-bar-drawer >.input-and-icon-wrapper > input{
+     width: 90%;
+     height: 40px;
    }
 
+
+  .search-bar-drawer > .input-and-icon-wrapper > .input-icon{
+    position: absolute;
+    z-index: 999;
+    transform-origin: center center;
+    top:20%;
+    right:20px;
+    cursor: pointer;
+  }
+
+  .search-bar-drawer >.input-and-icon-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .search-bar-drawer{
+    position: relative;
+    border-bottom: 1px solid lightgray;
+    padding-bottom:20px;
+  }
+
+  body > div.MuiDrawer-root.MuiDrawer-modal.MuiModal-root.css-1u2w381-MuiModal-root-MuiDrawer-root > div.MuiPaper-root.MuiPaper-elevation.MuiPaper-elevation16.MuiDrawer-paper.MuiDrawer-paperAnchorLeft.css-4t3x6l-MuiPaper-root-MuiDrawer-paper > div.MuiBox-root{
+    width: 100%;
+  }
+
+  body > div.MuiDrawer-root.MuiDrawer-modal.MuiModal-root.css-1u2w381-MuiModal-root-MuiDrawer-root > div.MuiPaper-root.MuiPaper-elevation.MuiPaper-elevation16.MuiDrawer-paper.MuiDrawer-paperAnchorLeft.css-4t3x6l-MuiPaper-root-MuiDrawer-paper > div.MuiBox-root.css-1hskriy > ul{
+    padding: 0;
+  }
+  body > div.MuiDrawer-root.MuiDrawer-modal.MuiModal-root.css-1u2w381-MuiModal-root-MuiDrawer-root > div.MuiPaper-root.MuiPaper-elevation.MuiPaper-elevation16.MuiDrawer-paper.MuiDrawer-paperAnchorLeft.css-4t3x6l-MuiPaper-root-MuiDrawer-paper > a{
+    width: 100%;
+    padding: 20px;
+    justify-content: center;
+    display: flex;
+  }
 }
