@@ -11,6 +11,10 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  color: cornflowerblue;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -24,13 +28,16 @@ header{
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
+  position: absolute;
+  z-index: 999;
+  top:0;
   width: 100%;
   height: 200px;
 }
 
 .app-bar-wrapper{
+  background-color: #ffffff;
   position: fixed;
-  z-index: 999;
   border-bottom: 20px solid cornflowerblue;
   width: 100%;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
@@ -78,7 +85,7 @@ nav{
 
 .search-bar > .input-and-icon-wrapper > input {
   position: absolute;
-  width: 20vw;
+  width: 300px;
   height: 40px;
   padding: 0 50px 0 10px;
 }
@@ -94,7 +101,7 @@ nav{
 
 .input-and-icon-wrapper{
   position: relative;
-  width: 20vw;
+  width: 300px;
   height: 40px;
 }
 
@@ -150,16 +157,9 @@ nav{
   cursor: pointer;
 }
 
-.social-icons-wrappers > a > svg:hover{
-  color: cornflowerblue;
-}
 
 .location-wrappers > a > p, .opening-hours > p{
  margin: 3px 0 0 5px;
-}
-
-.location-wrappers > a:hover{
-  color: cornflowerblue;
 }
 
 .product-categories, .other-pages-list-wrapper{
@@ -175,9 +175,6 @@ nav{
   border-right: 1px solid lightgray;
 }
 
-.product-categories > a:hover, .other-pages-list-wrapper > a:hover{
-  color:cornflowerblue;
-}
 
 .product-categories > a > p, .other-pages-list-wrapper > a > p{
   display: flex;
@@ -194,9 +191,8 @@ nav{
 }
 
 .webpage-content{
-  margin-top: 200px;
+  margin-top: 195px;
   margin-bottom: 300px;
-  height: 200vh;
   min-height: calc(100vh - 800px);
 }
 
@@ -242,7 +238,7 @@ footer{
   }
 
   .webpage-content{
-    margin-top: 150px;
+    margin-top: 165px;
     min-height: calc(100vh - 450px);
     margin-bottom: 0;
   }
@@ -264,7 +260,7 @@ footer{
   }
 
   .webpage-content{
-    margin-top: 120px;
+    margin-top: 135px;
     margin-bottom: 0;
   }
 
