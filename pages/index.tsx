@@ -33,8 +33,7 @@ const Home:FC = function () {
     },[productsSelector])
 
   return (
-
-        <div className={styles.contentWrapper}>
+       <div className={styles.contentWrapper}>
             <ImageComponent image={cover} width={1100} height={null} />
             <Divider Text={'Featured Products'} />
             {sliderProducts !== null && <ProductCarousel ProductData={sliderProducts}/> }

@@ -13,7 +13,10 @@ type Props = {
     shortDescription: string;
     addToCart: (e: MouseEvent<HTMLElement>) => void;
     link: string;
-    rating: number;
+    rating: {
+        count:number,
+        rate:number
+    };
     stock: number;
 };
 

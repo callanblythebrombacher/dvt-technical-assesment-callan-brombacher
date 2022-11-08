@@ -7,7 +7,7 @@ import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
 import { ProductCard } from '../molecules/productCard.component';
-import { ButtonComponent } from '../atoms/button.component';
+
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 export type Props = {
@@ -50,19 +50,45 @@ export const ProductCarousel: FC<Props> = (props) => {
                 onChangeIndex={handleStepChange}
                 enableMouseEvents
             >
-                {props.ProductData.map((value: any, index: number) => {
+                {props.ProductData.map((value: any, index: number, elements:Array<any>) => {
+
                     return (
+                        <div   key={index}>
                         <ProductCard
-                            key={index}
-                            image={value.image}
-                            price={value.price}
-                            title={value.title}
-                            shortDescription={value.description}
+                            image={value?.image}
+                            price={value?.price}
+                            title={value?.title}
+                            shortDescription={value?.description}
                             addToCart={addToCart}
-                            link={'/product/' + value.title.replace(/\s/g , "-")}
+                            link={'/product/' + value?.title.replace(/\s/g , "-")}
                             stock={100}
-                            rating={4}
+                            rating={value?.rating}
                         />
+                    {elements.length -2 > index ?
+                        <ProductCard
+                            image={elements[index+1]?.image}
+                            price={elements[index+1]?.price}
+                            title={elements[index+1]?.title}
+                            shortDescription={elements[index+1]?.description}
+                            addToCart={addToCart}
+                            link={'/product/' + elements[index+1]?.title.replace(/\s/g , "-")}
+                            stock={100}
+                            rating={elements[index+1]?.rating}
+                        /> : null}
+                            {
+                            elements.length -3 > index ?
+                        <ProductCard
+                            image={elements[index+2]?.image}
+                            price={elements[index+2]?.price}
+                            title={elements[index+2]?.title}
+                            shortDescription={elements[index+2]?.description}
+                            addToCart={addToCart}
+                            link={'/product/' + elements[index+2]?.title.replace(/\s/g , "-")}
+                            stock={100}
+                            rating={elements[index+2]?.rating}
+                        /> : null
+                    }
+                        </div>
                     );
                 })}
             </AutoPlaySwipeableViews>
