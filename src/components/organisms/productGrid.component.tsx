@@ -30,7 +30,6 @@ export const ProductGridView: FC<Props> = (props) => {
                                 shortDescription={value.description}
                                 addToCart={props.addToCart}
                                 link={value.link}
-                                stock={value.stock}
                             />
                         );
                     })}
