@@ -7,6 +7,7 @@ import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
 import { ProductCard } from '../molecules/productCard.component';
+import styles from '../../../styles/productCarousel.module.css'
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -53,7 +54,7 @@ export const ProductCarousel: FC<Props> = (props) => {
                 {props.ProductData.map((value: any, index: number, elements:Array<any>) => {
 
                     return (
-                        <div   key={index}>
+                        <div  className={styles.carouselContainer}  key={index}>
                         <ProductCard
                             image={value?.image}
                             price={value?.price}
@@ -61,10 +62,9 @@ export const ProductCarousel: FC<Props> = (props) => {
                             shortDescription={value?.description}
                             addToCart={addToCart}
                             link={'/product/' + value?.title.replace(/\s/g , "-")}
-                            stock={100}
                             rating={value?.rating}
                         />
-                    {elements.length -2 > index ?
+                    {elements.length -1 > index ?
                         <ProductCard
                             image={elements[index+1]?.image}
                             price={elements[index+1]?.price}
@@ -72,11 +72,10 @@ export const ProductCarousel: FC<Props> = (props) => {
                             shortDescription={elements[index+1]?.description}
                             addToCart={addToCart}
                             link={'/product/' + elements[index+1]?.title.replace(/\s/g , "-")}
-                            stock={100}
                             rating={elements[index+1]?.rating}
                         /> : null}
                             {
-                            elements.length -3 > index ?
+                            elements.length -2 > index ?
                         <ProductCard
                             image={elements[index+2]?.image}
                             price={elements[index+2]?.price}
@@ -84,7 +83,6 @@ export const ProductCarousel: FC<Props> = (props) => {
                             shortDescription={elements[index+2]?.description}
                             addToCart={addToCart}
                             link={'/product/' + elements[index+2]?.title.replace(/\s/g , "-")}
-                            stock={100}
                             rating={elements[index+2]?.rating}
                         /> : null
                     }

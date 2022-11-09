@@ -2,7 +2,7 @@ import React, { FC, MouseEvent } from 'react';
 import { ImageComponent } from '../atoms/image.component';
 import { TextComponent } from '../atoms/text.component';
 import { ButtonComponent } from '../atoms/button.component';
-import { GrAddCircle } from 'react-icons/all';
+import { MdAddCircleOutline } from 'react-icons/all';
 import { useRouter } from 'next/router';
 import { Rating } from '../atoms/rating.component';
 import styles from '../../../styles/productCard.module.css'
@@ -17,7 +17,6 @@ type Props = {
         count:number,
         rate:number
     };
-    stock: number;
 };
 
 export const ProductCard: FC<Props> = (props) => {
@@ -26,23 +25,26 @@ export const ProductCard: FC<Props> = (props) => {
     return (
         <div className={styles.productCardWrapper}>
             <ImageComponent image={props.image} height={350} width={350} />
-            <TextComponent fontType={'p'} text={props.stock} />
             <TextComponent fontType={'h3'} text={props.title} />
-            <TextComponent fontType={'h5'} text={props.price} />
+            <TextComponent fontType={'h4'} text={'R' + props.price} />
             <TextComponent fontType={'p'} text={props.shortDescription} />
             <Rating rating={props.rating} />
-            <ButtonComponent
-                handleClick={props.addToCart}
-                variation={'add-to-cart'}
-                text={'Add to Cart'}
-                icon={<GrAddCircle />}
-            />
-            <ButtonComponent
-                handleClick={() => router.push(props.link)}
-                variation={'primary-button'}
-                text={'Primary Button'}
-                icon={null}
-            />
+            <div className={styles.buttonWrapper}>
+                <ButtonComponent
+                    handleClick={props.addToCart}
+                    variation={'add-to-cart-button'}
+                    text={'Add to Cart'}
+                    icon={<MdAddCircleOutline size={20} />}
+                    iconWrapperClass={'add-to-cart-icon'}
+                />
+                <ButtonComponent
+                    handleClick={() => router.push(props.link)}
+                    variation={'primary-button'}
+                    text={'View More'}
+                    icon={null}
+                    iconWrapperClass={null}
+                />
+        </div>
         </div>
     );
 };
