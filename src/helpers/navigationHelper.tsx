@@ -24,7 +24,7 @@ export const helper: {
     footerNav: Array<{
         link: string;
         text: string;
-    }>
+    }>;
 } = {
     homeNavGuest: [
         {
@@ -90,22 +90,22 @@ export const helper: {
             icon: <BsCart2 size={25} />,
         },
     ],
-    footerNav:[
+    footerNav: [
         {
-            link:'/contact',
-            text:'Contact Us',
+            link: '/contact',
+            text: 'Contact Us',
         },
         {
-            link:'/terms-and-conditions',
-            text:'Terms and Conditions'
+            link: '/terms-and-conditions',
+            text: 'Terms and Conditions',
         },
         {
-            link:'/return-refund-policy',
-            text:'Return and Refund Policy'
+            link: '/return-refund-policy',
+            text: 'Return and Refund Policy',
         },
         {
-            link:'/privacy-policy',
-            text:'Privacy Policy'
-        }
-    ]
+            link: '/privacy-policy',
+            text: 'Privacy Policy',
+        },
+    ],
 };

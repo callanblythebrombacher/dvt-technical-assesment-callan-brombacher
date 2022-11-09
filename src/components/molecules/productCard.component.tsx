@@ -5,7 +5,7 @@ import { ButtonComponent } from '../atoms/button.component';
 import { MdAddCircleOutline } from 'react-icons/all';
 import { useRouter } from 'next/router';
 import { Rating } from '../atoms/rating.component';
-import styles from '../../../styles/productCard.module.css'
+import styles from '../../../styles/productCard.module.css';
 type Props = {
     image: any;
     price: string;
@@ -14,8 +14,8 @@ type Props = {
     addToCart: (e: MouseEvent<HTMLElement>) => void;
     link: string;
     rating: {
-        count:number,
-        rate:number
+        count: number;
+        rate: number;
     };
 };
 
@@ -44,7 +44,7 @@ export const ProductCard: FC<Props> = (props) => {
                     icon={null}
                     iconWrapperClass={null}
                 />
-        </div>
+            </div>
         </div>
     );
 };

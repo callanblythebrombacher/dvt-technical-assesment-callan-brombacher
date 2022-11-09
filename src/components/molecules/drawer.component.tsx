@@ -9,23 +9,20 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import { helper } from '../../helpers/navigationHelper';
 import { useRouter } from 'next/router';
-import {GiHamburgerMenu, AiOutlineClose} from 'react-icons/all'
-import {isMobile} from 'react-device-detect'
-import {PrimaryInput} from '../atoms/input.component'
+import { GiHamburgerMenu, AiOutlineClose } from 'react-icons/all';
+import { isMobile } from 'react-device-detect';
+import { PrimaryInput } from '../atoms/input.component';
 import { BiSearchAlt } from 'react-icons/all';
-import dynamic from 'next/dynamic'
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { ImageComponent } from '../atoms/image.component';
-import logo from '../../assets/images/logo.png'
+import logo from '../../assets/images/logo.png';
 
-const TopBar = dynamic(
-    () => import('../organisms/topBar.component'),
-    { ssr: false }
-)
+const TopBar = dynamic(() => import('../organisms/topBar.component'), {
+    ssr: false,
+});
 
 type Anchor = 'left';
 
@@ -78,13 +75,15 @@ export const Drawer = () => {
                     <>
                         <ListItem key={value.text} disablePadding>
                             <ListItemButton
-                                onClick={(e:MouseEvent<HTMLElement>) => {
+                                onClick={(e: MouseEvent<HTMLElement>) => {
                                     navigate.push(value.link);
                                 }}
                             >
                                 {value.hasIcon ? (
                                     <ListItemIcon>{value.icon}</ListItemIcon>
-                                ):<ListItemIcon></ListItemIcon>}
+                                ) : (
+                                    <ListItemIcon></ListItemIcon>
+                                )}
                                 <ListItemText primary={value.text} />
                             </ListItemButton>
                         </ListItem>
@@ -100,7 +99,7 @@ export const Drawer = () => {
             {(['left'] as const).map((anchor) => (
                 <React.Fragment key={anchor}>
                     <Button onClick={toggleDrawer(anchor, true)}>
-                            <GiHamburgerMenu size={40}/>
+                        <GiHamburgerMenu size={40} />
                     </Button>
                     <SwipeableDrawer
                         anchor={anchor}
@@ -110,32 +109,36 @@ export const Drawer = () => {
                     >
                         <div className={'drawer-close-icon-wrapper'}>
                             <Button onClick={toggleDrawer(anchor, false)}>
-                                    <AiOutlineClose size={30} />
+                                <AiOutlineClose size={30} />
                             </Button>
                         </div>
-                        {isMobile &&
+                        {isMobile && (
                             <>
-                            <TopBar/>
+                                <TopBar />
                                 <Link href={'/'}>
-                                    <ImageComponent image={logo} width={null} height={23}/>
+                                    <ImageComponent
+                                        image={logo}
+                                        width={null}
+                                        height={23}
+                                    />
                                 </Link>
-                            <div className={'search-bar-drawer'}>
-                                <PrimaryInput
-                                    value={search}
-                                    name={'search-bar'}
-                                    type={'text'}
-                                    errorText={null}
-                                    hasError={false}
-                                    hasIcon={true}
-                                    icon={<BiSearchAlt size={25} />}
-                                    hasLabel={false}
-                                    labelText={null}
-                                    handleChange={handleSearch}
-                                    placeHolder={'Seach. . .'}
-                                />
-                            </div>
+                                <div className={'search-bar-drawer'}>
+                                    <PrimaryInput
+                                        value={search}
+                                        name={'search-bar'}
+                                        type={'text'}
+                                        errorText={null}
+                                        hasError={false}
+                                        hasIcon={true}
+                                        icon={<BiSearchAlt size={25} />}
+                                        hasLabel={false}
+                                        labelText={null}
+                                        handleChange={handleSearch}
+                                        placeHolder={'Seach. . .'}
+                                    />
+                                </div>
                             </>
-                        }
+                        )}
                         {list(anchor)}
                     </SwipeableDrawer>
                 </React.Fragment>
